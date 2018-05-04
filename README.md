@@ -15,12 +15,12 @@ MOVE: Move o robô 1 quadrado para frente.
 - Todos os comandos devem ser ignorados, caso o robô ainda não tiver sido colocado no mapa (PLACE).
 
 ### Exemplos:  
-a) PLACE 0,0,NORTH MOVE Retorno: 0,1,NORTH  
-b) PLACE 0,0,NORTH LEFT Retorno: 0,0,WEST  
-c) PLACE 1,2,EAST MOVE MOVE LEFT MOVE Retorno: 3,3,NORTH  
-d) PLACE 3,3,SOUTH MOVE RIGHT Retorno: 3,2,WEST  
-e) SOUTH MOVE RIGHT Retorno: I'm not placed yet!  
-f) SOUTH MOVE RIGHT PLACE 0,0,NORTH MOVE PLACE 1,2,EAST MOVE MOVE LEFT MOVE Retorno: 3,3,NORTH
+a) "PLACE 0 0 NORTH", "MOVE" Retorno: 0 1 NORTH  
+b) "PLACE 0 0 NORTH", "LEFT" Retorno: 0 0 WEST  
+c) "PLACE 1 2 EAST", "MOVE", "MOVE", "LEFT", "MOVE" Retorno: 3 3 NORTH  
+d) "PLACE 3 3 SOUTH", "MOVE", "RIGHT" Retorno: 3 2 WEST  
+e) "SOUTH", "MOVE", "RIGHT", Retorno: I'm not placed yet!  
+f) "SOUTH", "MOVE", "RIGHT", "PLACE 0 0 NORTH", "MOVE", "PLACE 1 2 EAST", "MOVE", "MOVE", "LEFT", "MOVE", Retorno: 3 3 NORTH
 
 ### Melhoras futuras:  
 - Tratamento de comandos inválidos;  
