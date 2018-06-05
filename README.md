@@ -27,3 +27,15 @@ f) "SOUTH", "MOVE", "RIGHT", "PLACE 0 0 NORTH", "MOVE", "PLACE 1 2 EAST", "MOVE"
 - Adicionar obstáculos;  
 - Tamanho e formato do mapa variável;  
 - Comando DESTROY.
+
+Participantes da edição I, dia 02/05/2018:
+- [rbarbaresco](https://github.com/rbarbaresco)
+- [cristianekoester](https://github.com/cristianekoester)
+- [fabiocariati](https://github.com/fabiocariati)
+- [fyoshino](https://github.com/fyoshino)
+- [gabrielweiz](https://github.com/gabrielweiz)
+- [paulomartinssf](https://github.com/paulomartinssf)
+- [PriscilaBraga](https://github.com/PriscilaBraga)
+- [viniciusvolpesousa](https://github.com/viniciusvolpesousa)
+- [gumaestri](https://github.com/gumaestri)
+- [rafael-maciel](https://github.com/rafael-maciel)
