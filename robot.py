@@ -1,3 +1,7 @@
+# -*- coding: utf-8 -*-
+import sys
+
+
 class Robot:
 
     def __init__(self):
@@ -40,6 +44,21 @@ class Robot:
         return self.report()
 
     def report(self):
+        self.print_map()
         if not self.placed:
             return "I'm not placed yet"
         return ' '.join([str(self.x), str(self.y), self.direction])
+
+    def print_map(self):
+        x = int(self.x) if self.x else self.x
+        y = int(self.y) if self.y else self.y
+        print('  0 1 2 3 4')
+        for i in range(0, 5):
+            sys.stdout.write('{} '.format(i))
+            for j in range(0, 5):
+                if i == x and j == y:
+                    sys.stdout.write('☺ ')
+                else:
+                    sys.stdout.write('# ')
+            print('')
+        print('- - - - -')
