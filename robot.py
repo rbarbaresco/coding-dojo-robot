@@ -16,7 +16,7 @@ class Robot:
             if "PLACE" in command:
                 self.placed = True
                 self.x, self.y, self.direction = command.strip("PLACE ").split(" ")
-            if "MOVE" in command:
+            elif "MOVE" in command:
                 if self.direction == "NORTH":
                     self.y = int(self.y) + 1
                 elif self.direction == "SOUTH":
@@ -25,7 +25,7 @@ class Robot:
                     self.x = int(self.x) + 1
                 elif self.direction == "WEST":
                     self.x = int(self.x) - 1
-            if "LEFT" in command:
+            elif "LEFT" in command:
                 if self.direction == "NORTH":
                     self.direction = "WEST"
                 elif self.direction == "WEST":
@@ -34,7 +34,7 @@ class Robot:
                     self.direction = "EAST"
                 elif self.direction == "EAST":
                     self.direction = "NORTH"
-            if "RIGHT" in command:
+            elif "RIGHT" in command:
                 if self.direction == "WEST":
                     self.direction = "NORTH"
                 elif self.direction == "NORTH":
@@ -51,14 +51,14 @@ class Robot:
 
     def print_map(self):
         x = int(self.x) if self.x else self.x
-        y = int(self.y) if self.y else self.y
-        print('  0 1 2 3 4')
-        for i in range(0, 5):
+        y = 4 - int(self.y) if self.y else self.y
+        for i in reversed(range(0, 5)):
             sys.stdout.write('{} '.format(i))
-            for j in range(0, 5):
+            for j in reversed(range(0, 5)):
                 if i == x and j == y:
                     sys.stdout.write('☺ ')
                 else:
                     sys.stdout.write('# ')
             print('')
-        print('- - - - -')
+        print('  0 1 2 3 4')
+        print('- - - - - -')

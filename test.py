@@ -66,6 +66,15 @@ class RobotTest(unittest.TestCase):
     def test_deveria_retornar_0_3_EAST_com_3_moves_e_1_right(self):
         self.assertEqual("0 3 EAST", self.robot.execute("PLACE 0 0 NORTH", "MOVE", "MOVE", "MOVE", "RIGHT"))
 
+    def test_deveria_retornar_2_1_SOUTH_com_2_moves_e_1_right_move_right(self):
+        self.assertEqual("1 2 SOUTH", self.robot.execute("PLACE 0 0 NORTH", "MOVE", "MOVE", "RIGHT", "MOVE", "RIGHT"))
+
+    def test_deveria_retornar_2_2_SOUTH_com_2_moves_e_1_right_move_move_right(self):
+        self.assertEqual("2 2 SOUTH", self.robot.execute("PLACE 0 0 NORTH", "MOVE", "MOVE", "RIGHT", "MOVE", "MOVE", "RIGHT"))
+
+    def test_deveria_retornar_0_0_WEST_depois_de_alguns_comandos(self):
+        self.assertEqual("0 0 WEST", self.robot.execute("PLACE 0 2 EAST", "RIGHT", "MOVE", "MOVE", "RIGHT"))
+
     # def test_PLACE_nao_aceitando_negativo(self):
     #     saldjlaksdj
 
