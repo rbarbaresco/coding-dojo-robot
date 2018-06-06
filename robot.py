@@ -2,46 +2,83 @@
 import sys
 
 
+WEST = "WEST"
+NORTH = "NORTH"
+EAST = "EAST"
+SOUTH = "SOUTH"
+PLACE = "PLACE"
+MOVE = "MOVE"
+LEFT = "LEFT"
+RIGHT = "RIGHT"
+
+x_lower_limit = 0
+y_lower_limit = 0
+x_upper_limit = 4
+y_upper_limit = 4
+
+
 class Robot:
 
-    def __init__(self):
+    turn_states = {
+        RIGHT: {
+            WEST: NORTH,
+            NORTH: EAST,
+            EAST:  SOUTH,
+            SOUTH: WEST
+        },
+        LEFT: {
+            NORTH: WEST,
+            WEST: SOUTH,
+            SOUTH: EAST,
+            EAST: NORTH
+        }
+    }
+
+    def __init__(self, mapa):
         self.x = None
         self.y = None
         self.direction = None
         self.placed = False
+        self.commands_dict = {
+            MOVE: self.move,
+            LEFT: self.turn,
+            RIGHT: self.turn
+        }
 
     def execute(self, *commands):
         for command in commands:
-
-            if "PLACE" in command:
-                self.placed = True
-                self.x, self.y, self.direction = command.strip("PLACE ").split(" ")
-            elif "MOVE" in command:
-                if self.direction == "NORTH":
-                    self.y = int(self.y) + 1
-                elif self.direction == "SOUTH":
-                    self.y = int(self.y) - 1
-                elif self.direction == "EAST":
-                    self.x = int(self.x) + 1
-                elif self.direction == "WEST":
-                    self.x = int(self.x) - 1
-            elif "LEFT" in command:
-                if self.direction == "NORTH":
-                    self.direction = "WEST"
-                elif self.direction == "WEST":
-                    self.direction = "SOUTH"
-                elif self.direction == "SOUTH":
-                    self.direction = "EAST"
-                elif self.direction == "EAST":
-                    self.direction = "NORTH"
-            elif "RIGHT" in command:
-                if self.direction == "WEST":
-                    self.direction = "NORTH"
-                elif self.direction == "NORTH":
-                    self.direction = "EAST"
-                elif self.direction == "EAST":
-                    self.direction = "SOUTH"
+            if PLACE in command:
+                self.place(command)
+            if command in self.commands_dict.keys():
+                self.commands_dict[command](command)
         return self.report()
+
+    def place(self, command):
+        self.placed = True
+        self.x, self.y, self.direction = command.strip("PLACE ").split(" ")
+
+    def turn(self, command):
+        self.direction = self.turn_states[command][self.direction]
+
+    def check_limit(self, x, y):
+        if x < x_lower_limit:
+            x = x_lower_limit
+        if y < y_lower_limit:
+            y = y_lower_limit
+        if x > x_upper_limit:
+            x = x_upper_limit
+        if y > y_upper_limit:
+            y = y_upper_limit
+        return x, y
+
+    def move(self, command):
+        move = {
+            NORTH: (0,  1),
+            WEST: (-1,  0),
+            SOUTH: (0, -1),
+            EAST: (1, 0)
+        }
+        self.x, self.y = self.check_limit(int(self.x) + move[self.direction][0], int(self.y) + move[self.direction][1])
 
     def report(self):
         self.print_map()
@@ -56,7 +93,7 @@ class Robot:
             sys.stdout.write('{} '.format(i))
             for j in reversed(range(0, 5)):
                 if i == x and j == y:
-                    sys.stdout.write('☺ ')
+                    sys.stdout.write('R ')
                 else:
                     sys.stdout.write('# ')
             print('')

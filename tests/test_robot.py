@@ -2,12 +2,13 @@
 import unittest
 
 import robot
+from unittest.mock import MagicMock
 
 
 class RobotTest(unittest.TestCase):
 
     def setUp(self):
-        self.robot = robot.Robot()
+        self.robot = robot.Robot(MagicMock())
 
     def test_deveria_receber_uma_lista_de_comandos(self):
         self.robot.execute("SEi pa")
@@ -74,6 +75,12 @@ class RobotTest(unittest.TestCase):
 
     def test_deveria_retornar_0_0_WEST_depois_de_alguns_comandos(self):
         self.assertEqual("0 0 WEST", self.robot.execute("PLACE 0 2 EAST", "RIGHT", "MOVE", "MOVE", "RIGHT"))
+
+    def test_deveria_continuar_em_0_0_WEST(self):
+        self.assertEqual("0 0 WEST", self.robot.execute("PLACE 0 0 WEST", "MOVE"))
+
+    def test_deveria_continuar_em_4_4_EAST(self):
+        self.assertEqual("4 4 EAST", self.robot.execute("PLACE 4 4 EAST", "MOVE"))
 
     # def test_PLACE_nao_aceitando_negativo(self):
     #     saldjlaksdj
