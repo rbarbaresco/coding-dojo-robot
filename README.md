@@ -39,3 +39,14 @@ Participantes da edição I, dia 02/05/2018:
 - [viniciusvolpesousa](https://github.com/viniciusvolpesousa)
 - [gumaestri](https://github.com/gumaestri)
 - [rafael-maciel](https://github.com/rafael-maciel)
+
+
+Participantes da edição II, dia 06/06/2018:
+- [rbarbaresco](https://github.com/rbarbaresco)
+- [cristianekoester](https://github.com/cristianekoester)
+- [fabiocariati](https://github.com/fabiocariati)
+- [fyoshino](https://github.com/fyoshino)
+- [gabrielweiz](https://github.com/gabrielweiz)
+- [PriscilaBraga](https://github.com/PriscilaBraga)
+- [gumaestri](https://github.com/gumaestri)
+- [TiagoMMSchneider](https://github.com/TiagoMMSchneider)
